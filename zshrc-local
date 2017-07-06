@@ -1,1 +1,1 @@
-"${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+"${ZDOTDIR:-$HOME}/.yadr/zsh/zprezto/init.zsh"
