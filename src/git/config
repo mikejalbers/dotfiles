@@ -1,0 +1,91 @@
+[alias]
+	ec = config --global -e
+	save = !git add -A && git commit -m 'SAVEPOINT'
+	undo = reset HEAD~1 --mixed
+	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+	publish = !git push -u origin $(git branch-name)
+	a = add
+	c = commit -m
+	s = status -sb
+	f = fetch --all --prune
+	l = log --graph --oneline
+	t = tag -a -s -m
+	logg = log --date=relative --date-order --graph
+	id = "!f() {\
+		printf '%s <%s> %s\\n' \
+		\"$(git config user.name)\" \
+		\"$(git config user.email)\" \
+		\"$(git config user.signingkey)\"; \
+	}; f"
+
+[core]
+    abbrev = 12 # Abbreviated object name (default: 7)
+	bigFileThreshold = 32m # Size of non-delta'd binaries (default: 512m)
+	editor = vim
+
+[diff]
+    algorithm = minimal # Find smaller diffs (default: myers)
+    renames = copies # Detect file renames and copies
+
+[format]
+    pretty = "%H %ci $ce %ae %d %s"
+
+[gpg]
+    program = gpg
+
+[log]
+    follow = true # Follow renames of single files
+    mailmap = true # Fixup authorship info using mailmap file
+
+[mailmap]
+    file = ~/.config/git/mailmap # User mailmap file
+
+[merge]
+    conflictStyle = diff3 # Show common ancestor in conflicts (default: merge)
+    defaultToUpstream = true # Merge from upstream if no commit given
+    tool = vimdiff # Merge tool to use for resolving conflicts
+
+[mergetool]
+    keepBackup = false # Don't write .orig files on conflict
+
+[pager]
+    # Use diff-highlight to highlight words in diffs
+    #diff = diff-highlight | less
+    #log = diff-highlight | less
+    #show = diff-highlight | less
+
+[pretty]
+    # Author and committer in "name <email>" format, with and without mailmap
+    id = "tformat:%aN <%aE>%n%cN <%cE>"
+    idraw = "tformat:%an <%ae>%n%cn <%ce>"
+
+    # Custom medium and oneline formats
+    medium2 = "tformat:%C(auto)%h %<(50,trunc)%s %C(auto,blue)%aN%C(auto)%d%C(auto,reset) %cd%+b"
+    oneline2 = "tformat:%C(auto)%h %<(50,trunc)%s %C(auto,blue)%aN%C(auto)%d%C(auto,reset) %cd"
+
+[push]
+    default = nothing # Refuse to push without a refspec
+    recurseSubmodules = check # Abort if any submodules haven't been pushed
+    followTags = true
+[rebase]
+    autoStash = true # Auto-stash before rebase (and auto-pop after)
+    stat = true # Show merge-like diffstat after a rebase
+
+[rerere]
+    autoUpdate = true # Update the index after applying a rerere resolution
+    enabled = true # Enable rerere (record/reuse merge conflict resolutions)
+
+[stash]
+    showPatch = true # Include patch (not just diffstat) when showing a stash
+
+[status]
+    branch = true # Show branch info in short status
+    short = true # Use the short status format by default
+    submoduleSummary = true # Show changed submodule commit summary
+
+[transfer]
+    fsckObjects = true # Check all fetched and received objects
+
+[user]
+    useConfigOnly = true # Don't try to guess user name or email
+    name = "Andrew Jackson"
