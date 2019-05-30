@@ -3,6 +3,7 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/ajackson/.oh-my-zsh"
+source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
