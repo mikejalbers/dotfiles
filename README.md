@@ -1,2 +1,1 @@
-# dotfiles
-Andrew's dotfiles
+dotfiles for easy setup
